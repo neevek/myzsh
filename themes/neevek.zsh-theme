@@ -3,7 +3,7 @@ function get_git_info() {
   mcount=$(git status --porcelain 2> /dev/null | grep -cv '^?')
   if [[ $mcount -ne 0 ]]; then
     echo -e "(%{$fg_bold[green]%}$br%{$reset_color%}|%{$fg[red]%}$mcount%{$reset_color%})"
-  else
+  elif [[ ! -z "$br" ]]; then
     echo -e "(%{$fg_bold[green]%}$br%{$reset_color%})"
   fi
 }
